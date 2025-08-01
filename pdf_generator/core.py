@@ -8,6 +8,8 @@ from .components.grafico_barra_v import draw_vertical_bar_chart
 from .components.grafico_dispersion import grafico_dispersion
 from .components.grafico_boxplot import grafico_boxplot
 from .components.rectangulo_bg import rectangulo_bg
+from .components.tabla_basica import draw_tabla_basica
+from .components.tarjetas_sm import draw_tarjetas_sm
 
 def generate_sample_pdf(filename: str = "ejemplo.pdf"):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -47,8 +49,9 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
     width = 550
     draw_vertical_bar_chart(
         canvas,
-        x=(PAGE_WIDTH - width) / 2,
-        y=500,  # posición vertical base
+        #x=(PAGE_WIDTH - width) / 2,
+        x = 0,
+        y=500,
         data = [
         (
             "Interpretar y construir expresiones algebraicas a partir de\n"
@@ -72,8 +75,10 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
         ],
         max_value=100.0,
         height=150,
-        width = 550,
-        title="Logro promedio por Aprendizajee",
+        #width=500,
+        width=300,
+        title="Logro promedio por Aprendizaje",
+        scale=0.5,
         show_border=True
     )
     """
@@ -87,8 +92,10 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
 
     grafico_dispersion(
         canvas,
-        x=60,
-        y=180,
+        #x=60,
+        #y=180,
+        x = 350,
+        y = 500,
         notas=notas,
         nota_alumno=nota_alumno,
         width=400,
@@ -98,14 +105,66 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
 
     grafico_boxplot(
         canvas,
-        x=60,
-        y=180,
+        #x=60,
+        #y=180,
+        x = 350,
+        y = 500,
         notas=notas,
         nota_alumno=nota_alumno,
         width=400,
         height=100,
         title=""
     )
+    """
+    draw_tabla_basica(
+        canvas=canvas,
+        x=0,
+        y=400,
+        data={
+            "titulo": "Resultados por Ítem",
+            "subtitulo": "Evaluación de conceptos clave",
+            "titulos": [
+                "N",
+                "Aspecto",
+                "Evaluación Conceptual",
+                "Puntaje Alcanzado",
+                "Puntaje Máximo"
+            ],
+            "valores": [
+                ["14", "Fundamentación comentario organi zación de las ideas organi zación de las ideas organiz ación de las ideas", "Dominio por lograr", "0", "3"],
+                ["14", "Organización de las ideas", "Dominio por lograr", "0", "2"],
+                ["14", "Redacción y ortografía", "Dominio por lograr", "0", "2"],
+                ["15", "Respuesta correo electrónico", "Dominio por lograr", "0", "3"],
+                ["15", "Organización de las ideas", "Dominio por lograr", "0", "2"],
+                ["15", "Redacción y ortografía", "Dominio por lograr", "0", "2"],
+                ["16", "EP Adecuación a la situación comunicativa", "Excelente dominio", "5", "5"],
+                ["17", "EP Marcadores discursivos", "Excelente dominio", "5", "5"],
+                ["18", "EP Estructura argumentativa", "Excelente dominio", "5", "5"],
+                ["19", "EP Calidad de las intervenciones", "Excelente dominio", "5", "5"],
+                ["20", "EP Matices de la voz", "Excelente dominio", "5", "5"],
+                ["21", "EP Lenguaje no verbal", "Excelente dominio", "5", "5"]
+            ]
+        },
+        col_widths=[30, 180, 130, 80, 80],
+        alignments=["center", "left", "center", "center", "center"],
+        scale=1
+    )
+    """
+    draw_tarjetas_sm(
+        canvas,
+        x=200,
+        y=300,
+        valores={
+            "correctas": 0,
+            "incorrectas": 0,
+            "omitidas": 13
+        },
+        width=140,
+        height=55,
+        spacing=10,
+        scale=1.0
+    )
+
 
     canvas.save()
     return filepath

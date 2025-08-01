@@ -168,9 +168,22 @@ STYLES = {
     "barras_v_text":             ("MyriadPro-Cond", 12),
 
     # Titulo barra vertical
-    "barras_v_sub_title":             ("MyriadPro-Cond", 13),
+    "barras_v_title":             ("MyriadPro-Cond", 18),
+    # Titulo barra vertical
+    "barras_v_subtitle":             ("MyriadPro-Cond", 16),
 
     # eje x grafico dispersion
     "ejes_text": ("Helvetica", 9),
+
+    # Tabla basica: titulo
+    "table_b_title":             ("MyriadPro-Cond", 18),
+    # Tabla basica: subtitulo
+    "table_b_subtitle":             ("MyriadPro-Cond", 16),
+    # Tabla basica: header
+    "table_b_header":             ("MyriadPro-Cond", 14),
+    # Tabla basica: celdas
+    "table_b_cell":             ("MyriadPro-Light", 12),
+
+
 
 }

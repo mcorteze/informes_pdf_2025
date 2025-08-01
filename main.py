@@ -11,4 +11,4 @@ if __name__ == "__main__":
         os.startfile(path)  # ✅ Solo funciona en Windows
     except AttributeError:
         print("Apertura automática no soportada en este sistema operativo.")
-    """
+    """ 
