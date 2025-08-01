@@ -49,8 +49,7 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
     width = 550
     draw_vertical_bar_chart(
         canvas,
-        #x=(PAGE_WIDTH - width) / 2,
-        x = 0,
+        x=(PAGE_WIDTH - width) / 2,
         y=500,
         data = [
         (
@@ -76,9 +75,9 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
         max_value=100.0,
         height=150,
         #width=500,
-        width=300,
+        width=500,
         title="Logro promedio por Aprendizaje",
-        scale=0.5,
+        scale=1,
         show_border=True
     )
     """
@@ -89,13 +88,12 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
     notas = [2.6, 2.3, 2.6, 3.3, 3.4, 2.5, 4.1, 2.9, 3.5, 3.4, 2.1, 1.8, 3.9, 1.4, 2.4, 4.7, 2.2, 2.0, 2.5, 2.8, 2.5, 2.6, 3.6, 3.0, 2.9, 2.4, 3.3, 3.2, 6.5, 2.7, 2.8, 2.8, 3.9, 4.2, 3.7, 2.8, 7.0, 7.0, 7.0]
 
     nota_alumno = 3.3
-
+    """
     grafico_dispersion(
         canvas,
-        #x=60,
-        #y=180,
-        x = 350,
-        y = 500,
+        x=60,
+        y=180,
+
         notas=notas,
         nota_alumno=nota_alumno,
         width=400,
@@ -105,17 +103,16 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
 
     grafico_boxplot(
         canvas,
-        #x=60,
-        #y=180,
-        x = 350,
-        y = 500,
+        x=60,
+        y=180,
         notas=notas,
         nota_alumno=nota_alumno,
         width=400,
         height=100,
         title=""
     )
-    """
+    """  
+
     draw_tabla_basica(
         canvas=canvas,
         x=0,
@@ -147,8 +144,10 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
         },
         col_widths=[30, 180, 130, 80, 80],
         alignments=["center", "left", "center", "center", "center"],
-        scale=1
+        scale=0.5
     )
+    
+
     """
     draw_tarjetas_sm(
         canvas,
@@ -164,7 +163,7 @@ def generate_sample_pdf(filename: str = "ejemplo.pdf"):
         spacing=10,
         scale=1.0
     )
-
+    """
 
     canvas.save()
     return filepath

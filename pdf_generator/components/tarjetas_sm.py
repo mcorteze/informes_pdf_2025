@@ -79,11 +79,13 @@ def draw_tarjetas_sm(
             canvas.setFillColor(color)
             canvas.drawString(icon_x, center_y - icon_font[1] / 2 + 2, tarjeta["icono"])
 
+        number_label_spacing = 6 * scale  # 🔧 Espacio entre número y etiqueta
+
         # 🎯 Ajuste vertical
-        group_height = number_font[1] + label_font[1] + 3
+        group_height = number_font[1] + label_font[1] + number_label_spacing
         group_top = center_y + group_height / 2
 
-        # 🧮 Calcular anchos para centrar respecto al texto más largo
+        # 🧮 Cálculo de alineación horizontal centrada
         canvas.setFont(*number_font)
         num_width = canvas.stringWidth(valor, *number_font)
         canvas.setFont(*label_font)
@@ -101,4 +103,4 @@ def draw_tarjetas_sm(
         # 🔤 Etiqueta
         canvas.setFont(*label_font)
         canvas.setFillColor(color)
-        canvas.drawString(label_x, group_top - number_font[1] - label_font[1] - 3, tarjeta["label"])
+        canvas.drawString(label_x, group_top - number_font[1] - label_font[1] - number_label_spacing, tarjeta["label"])
